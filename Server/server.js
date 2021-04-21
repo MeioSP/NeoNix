@@ -16,4 +16,19 @@ io.on('connection', function(socket){
 			socket.emit('wrongPass') // send message to client that 'data' - our password isn't right - not 200
 		}
 	});
+
+	socket.on('registerRequest', function(insertId, insertPw) {
+		var user = { 
+			name : {
+				id: insertId,
+				author: insertPw
+			}
+		}
+		fs.readFile('data.json', function (err) {
+			data.push(user)
+		
+			fs.writeFile("data.json", JSON.stringify(data))
+		})
+
+	})
 });
