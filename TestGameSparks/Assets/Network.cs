@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using SocketIO;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Network : MonoBehaviour {
 
@@ -34,5 +35,20 @@ public class Network : MonoBehaviour {
 		socket.Emit("loginRequest", new JSONObject(FieldText)); 
 		// Send our text and check if it's right (Exactly in JSON)
 		// Exactly in JSON, because server checks only JSON
+	}
+
+	public void OnRegisterClick()
+    {
+		Dictionary<string,string > registerData = new Dictionary<string, string>();
+		string id = GameObject.Find("idinput").GetComponent<InputField>().text;
+		string psw = GameObject.Find("pswinput").GetComponent<InputField>().text;
+		string repsw = GameObject.Find("repswinput").GetComponent<InputField>().text;
+		string nickname = GameObject.Find("nicknameinput").GetComponent<InputField>().text;
+		registerData.Add("id",id);
+		registerData.Add("psw", psw);
+		registerData.Add("repsw", repsw);
+		registerData.Add("nickname", nickname);
+
+		socket.Emit("registerRequest",new JSONObject(registerData));
 	}
 }
