@@ -51,4 +51,25 @@ public class Network : MonoBehaviour {
 
 		socket.Emit("registerRequest",new JSONObject(registerData));
 	}
+
+	public void OnLoginClick()
+    {
+		Dictionary<string, string> loginData = new Dictionary<string, string>();
+
+		string id = GameObject.Find("idinput").GetComponent<InputField>().text;
+		string psw = GameObject.Find("pswinput").GetComponent<InputField>().text;
+
+		loginData.Add("id", id);
+		loginData.Add("psw", psw);
+
+		socket.Emit("loginRequest", new JSONObject(loginData));
+
+
+
+	}
+
+	public void LoginSuccess()
+    {
+
+    }
 }
