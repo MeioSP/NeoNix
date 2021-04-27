@@ -9,19 +9,19 @@ var data = JSON.parse(buffer)
 io.on('connection', function(socket){
 	console.log('connected');
 
-	socket.on('loginRequest', function(insert){ // recieve password called 'data'
-		if(insert == data.password){
+	socket.on('loginRequest', function(insertId, insertPw){ // recieve password called 'data'
+		if(insertPw == data.string(insertId).password){
 			socket.emit('login'); // send message to client that 'data' - our password is right - 200
 		} else {
-			socket.emit('wrongPass') // send message to client that 'data' - our password isn't right - not 200
+			socket.emit('wrongPassOrId') // send message to client that 'data' - our password isn't right - not 200
 		}
 	});
 
-	socket.on('registerRequest', function(insertId, insertPw) {
+	socket.on('registerRequest', function(insertId, insertPw, name) {
 		var user = { 
-			name : {
-				id: insertId,
-				author: insertPw
+			insertId : {
+				"name": name,
+				"pw": insertPw
 			}
 		}
 		fs.readFile('data.json', function (err) {
