@@ -62,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Login.cs" />
     <Compile Include="Assets\Network.cs" />
+    <Compile Include="Assets\Register.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONObject.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONTemplates.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\VectorTemplates.cs" />
@@ -710,7 +712,16 @@
       <HintPath>D:/projects/졸업작품 준비/NeoNix/TestGameSparks/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="PlayFab.csproj">
+      <Project>{D879F5F9-FA32-7524-0806-531C81ADE30B}</Project>
+      <Name>PlayFab</Name>
+    </ProjectReference>
+    <ProjectReference Include="PlayFabSDKEditor.csproj">
+      <Project>{CB1BF8AF-D8DD-FB6C-5592-EC10DCC1D8D5}</Project>
+      <Name>PlayFabSDKEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
